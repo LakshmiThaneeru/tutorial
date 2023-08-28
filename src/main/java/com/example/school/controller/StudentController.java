@@ -19,26 +19,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
 
-   @Autowired
+  
+@Autowired
    public void StudentH2Service();
 
    @GetMapping("/students")
-   public ArrayList<students> getStudents(){
+   public ArrayList<Student> getStudents(){
      return StudentH2Service.getStudents();
    };
 
     @GetMapping("/students/{studentId}")
-    public void Student getStudentId(@PathVariable("studentId") int studentId) {
+    public void Student getStudentId(@PathVariable(value="studentId") int studentId) {
         return StudentH2Service.getStudentId(studentId);
     };
 
     @PostMapping("/students")
-    public void Student addStudent(@RequestBody Student student){
-        return StudentH2Service.addStudent(student);
+     public ArrayList<Student> addStudent(){
+        return StudentH2Service.addStudent(Student);
     };
     @PostMapping("/students/bulk")
-    public void Student addStudent(@RequestBody Student student){
-        return StudentH2Service.addStudent(student);
+    public void Student Student addStudent(@RequestBody Student student){
+        return StudentH2Service.addStudent(Student);
     };
 
     @PutMapping("/students/{studentId}")
