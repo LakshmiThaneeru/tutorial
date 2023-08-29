@@ -3,7 +3,7 @@ package com.example.school.controller;
 import java.util.ArrayList;
 
 import com.example.school.model.Student;
-import com.example.school.service.StudentH2Service;
+import com.example.school.service.studentH2Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,36 +20,55 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentController {
 
   
+private static final void Student();
 @Autowired
-   public void StudentH2Service();
+   public void studentH2Service();
 
    @GetMapping("/students")
    public ArrayList<Student> getStudents(){
-     return StudentH2Service.getStudents();
+     return studentH2Service.getStudents();
    };
 
     @GetMapping("/students/{studentId}")
     public void Student getStudentId(@PathVariable(value="studentId") int studentId) {
-        return StudentH2Service.getStudentId(studentId);
+        return studentH2Service.getStudentId(studentId);
     };
 
     @PostMapping("/students")
-     public ArrayList<Student> addStudent(){
-        return StudentH2Service.addStudent(Student);
+     public  ArrayList<Student> addStudent(){
+        return studentH2Service.addStudent(Student);
     };
     @PostMapping("/students/bulk")
-    public void Student Student addStudent(@RequestBody Student student){
-        return StudentH2Service.addStudent(Student);
+
+    public String addMultipleStudents(@RequestBody ArrayList<Student> studentsList) { 
+
+        return studentH2Service.addMultipleStudents(studentsList);
     };
 
     @PutMapping("/students/{studentId}")
     public void Student StudentController(@PathVariable("studentId") int studentId, @RequestBody Student student) {
-        return StudentH2Service.Student;
+        return studentH2Service.Student;
     }; 
 
     @DeleteMapping("/students/{studentId}")
     public void deleteStudent(@PathVariable("studentId") int studentId){
-        return StudentH2Service.deleteStudent(studentId);
-    };
+        return studentH2Service.deleteStudent(studentId);
+    }
+
+	public void getStudent() {
+		return Student;
+	}
+
+	public void setStudent(void student) {
+		Student = student;
+	}
+
+	public void getStudent() {
+		return Student;
+	}
+
+	public void setStudent(void student) {
+		Student = student;
+	};    
 
 }

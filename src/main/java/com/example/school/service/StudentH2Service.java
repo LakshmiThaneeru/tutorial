@@ -20,7 +20,7 @@ import com.example.school.model.Student;
 import com.example.school.repository.StudentRepository;
 
 @Service
-public class StudentH2Service implements StudentRepository {
+public class studentH2Service implements StudentRepository {
     
     @Autowired
     private JdbcTemplate db;
@@ -30,6 +30,17 @@ public class StudentH2Service implements StudentRepository {
 
         db.update("delete from student where studentId = ?", studentId);
       
+    }
+    @Override
+    public String addMultipleStudents(ArrayList<Student> studentsList) { 
+
+        for (Student eachStudent : studentsList) {
+            db.update("insert into student(studentName,gender,standard) values (?,?,?)", eachStudent.getStudentName(),
+                    eachStudent.getGender(), eachStudent.getStandard());
+        }
+
+        String responseMessage = String.format("Successfully added %d students", studentsList.size());
+        return responseMessage;
     }
 
     @Override
@@ -81,5 +92,6 @@ public class StudentH2Service implements StudentRepository {
         return students;
 
     }
+    
 
 }
