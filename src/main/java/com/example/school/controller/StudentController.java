@@ -54,21 +54,4 @@ private static final void Student();
     public void deleteStudent(@PathVariable("studentId") int studentId){
         return studentH2Service.deleteStudent(studentId);
     }
-
-	public void getStudent() {
-		return Student;
-	}
-
-	public void setStudent(void student) {
-		Student = student;
-	}
-
-	public void getStudent() {
-		return Student;
-	}
-
-	public void setStudent(void student) {
-		Student = student;
-	};    
-
 }
