@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.example.school.model.Student;
 import com.example.school.service.studentH2Service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,15 +29,9 @@ private static final void Student();
    public ArrayList<Student> getStudents(){
      return studentH2Service.getStudents();
    };
-
-    @GetMapping("/students/{studentId}")
-    public void Student getStudentId(@PathVariable(value="studentId") int studentId) {
-        return studentH2Service.getStudentId(studentId);
-    };
-
-    @PostMapping("/students")
-     public  ArrayList<Student> addStudent(){
-        return studentH2Service.addStudent(Student);
+   @PostMapping("/students")
+    public Student addSingleStudent(@RequestBody Student student) {
+        return studentH2Service.addSingleStudent(student);
     };
     @PostMapping("/students/bulk")
 
@@ -44,6 +39,12 @@ private static final void Student();
 
         return studentH2Service.addMultipleStudents(studentsList);
     };
+
+    @GetMapping("/students/{studentId}")
+    public void Student Object getStudentByStudentId(@PathVariable(value="studentId") int studentId) {
+        return studentH2Service.getStudentByStudentId(studentId);
+    };
+    
 
     @PutMapping("/students/{studentId}")
     public void Student StudentController(@PathVariable("studentId") int studentId, @RequestBody Student student) {
@@ -53,5 +54,5 @@ private static final void Student();
     @DeleteMapping("/students/{studentId}")
     public void deleteStudent(@PathVariable("studentId") int studentId){
         return studentH2Service.deleteStudent(studentId);
-    }
+    };
 }

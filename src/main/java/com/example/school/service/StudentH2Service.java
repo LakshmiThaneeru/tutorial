@@ -32,6 +32,17 @@ public class studentH2Service implements StudentRepository {
       
     }
     @Override
+    public Student addSingleStudent(Student student) {
+    // This is a SQL command that inserts a new student into the student table in the database.
+        db.update("insert into student(studentName,gender,standard) values (?,?,?)", student.getStudentName(),
+            student.getGender(), student.getStandard());
+
+
+    // The StudentRowMapper is used to map the result set from the query into a Student object.
+    return db.queryForObject("select * from student where studentName = ? and gender = ? and standard = ?",
+            new StudentRowMapper(), student.getStudentName(), student.getGender(), student.getStandard());
+}
+    @Override
     public String addMultipleStudents(ArrayList<Student> studentsList) { 
 
         for (Student eachStudent : studentsList) {
@@ -69,7 +80,7 @@ public class studentH2Service implements StudentRepository {
     }
 
     @Override
-    public Student getStudentByStudent(int studentId) {
+    public Student getStudentByStudentId(int studentId) {
 
       try{
         
